@@ -1,3 +1,4 @@
+import type { IUser } from '@/features/auth/types/auth'
 import type {
   ResponseSuccessListType,
   ResponseSuccessType,
@@ -5,6 +6,19 @@ import type {
 
 export interface IPost {
   _id: string
+  author: IUser
+  content?: string
+  file?: string
+  createdAt: string
+  updatedAt: string
+  totalViews: number
+  totalLikes: number
+  totalShares: number
+  totalComments: number
+  totalBookmarks: number
+  isLiked: boolean
+  isShared: boolean
+  isBookmarrked: boolean
 }
 
 export interface IPostStore {

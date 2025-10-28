@@ -5,6 +5,8 @@ import type {
 
 export interface IStory {
   _id: string
+  fileUrl: string
+  type?: string
 }
 
 export interface IStoryStore {

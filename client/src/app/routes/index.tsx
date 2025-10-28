@@ -7,21 +7,27 @@ import NotFoundPage from '../pages/notfound-page'
 import AuthRouter from '@/features/auth'
 import UploadRouter from '@/features/upload'
 import AuthProtectedRoute from './AuthProtectedRoute'
+import Layout from '@/shared/components/layout/Layout'
+import ProfilePage from '@/features/user/pages/ProfilePage'
 
 const MainRouter = () => {
   return (
     <Routes>
       {/* public */}
-      <Route index element={<HomePage />} />
-      <Route path="search" element={<SearchPage />} />
-      <Route path="*" element={<NotFoundPage />} />
       {/* auth */}
       <Route path="auth/*" element={<AuthRouter />} />
       {/* upload */}
       <Route path="upload/*" element={<UploadRouter />} />
       {/* chat */}
       {/* comment */}
-      <Route element={<AuthProtectedRoute />}></Route>
+      <Route element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="explore" element={<SearchPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+        <Route element={<AuthProtectedRoute />}>
+          <Route path="profile" element={<ProfilePage />} />
+        </Route>
+      </Route>
     </Routes>
   )
 }

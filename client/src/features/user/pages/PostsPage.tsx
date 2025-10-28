@@ -1,16 +1,12 @@
 import PostInfinity from '@/features/post/components/PostInfinity'
 import { posts } from '@/features/post/data'
-import StorySide from '@/features/story/components/StorySide'
 
-const HomePage = () => {
+const PostsPage = () => {
   return (
     <div>
-      {/* stoies */}
-      <StorySide />
-      {/* posts */}
       <PostInfinity data={posts} />
     </div>
   )
 }
 
-export default HomePage
+export default PostsPage
