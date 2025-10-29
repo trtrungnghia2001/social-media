@@ -8,17 +8,27 @@ export interface IPost {
   _id: string
   author: IUser
   content?: string
-  file?: string
+  fileUrl?: string
   createdAt: string
   updatedAt: string
+
   totalViews: number
+
   totalLikes: number
-  totalShares: number
-  totalComments: number
-  totalBookmarks: number
   isLiked: boolean
+
+  totalBookmarks: number
+  isBookmarked: boolean
+
+  totalShares: number
   isShared: boolean
-  isBookmarrked: boolean
+
+  totalComments: number
+}
+
+export interface IPostDTO {
+  content?: string
+  file?: File
 }
 
 export interface IPostStore {
@@ -34,6 +44,8 @@ export interface IPostStore {
   getMe: (query?: string) => Promise<ResponseSuccessListType<IPost>>
   // like
   toggleLike: (postId: string) => Promise<ResponseSuccessType<IPost>>
-  // share
-  sharePost: (postId: string) => Promise<ResponseSuccessType<IPost>>
+  // repost
+  toggleRepost: (postId: string) => Promise<ResponseSuccessType<IPost>>
+  // bookmark
+  toggleBookmark: (postId: string) => Promise<ResponseSuccessType<IPost>>
 }

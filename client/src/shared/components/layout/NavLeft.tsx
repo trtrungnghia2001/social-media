@@ -52,7 +52,7 @@ const NavLeft = () => {
   const { pathname } = useLocation()
 
   return (
-    <nav className="flex flex-col gap-2 min-w-64 p-4 h-screen overflow-y-auto">
+    <nav className="sticky top-0 flex flex-col gap-2 min-w-64 p-4 h-screen overflow-y-auto">
       {nav_links.map(({ title, path, icon: Icon }) => {
         const isActive = pathname === path
         return (

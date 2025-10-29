@@ -1,14 +1,12 @@
 import PostInfinity from '@/features/post/components/PostInfinity'
-import { posts } from '@/features/post/data'
 import StorySide from '@/features/story/components/StorySide'
-
 const HomePage = () => {
   return (
     <div>
       {/* stoies */}
       <StorySide />
       {/* posts */}
-      <PostInfinity data={posts} />
+      <PostInfinity queryKey={['home', 'post']} />
     </div>
   )
 }

@@ -8,7 +8,7 @@ interface StoryCardProps {
 const StoryCard = ({ data }: StoryCardProps) => {
   return (
     <div>
-      <div className="aspect-story overflow-hidden rounded-lg cursor-pointer">
+      <div className="aspect-story overflow-hidden rounded-lg border cursor-pointer">
         <img src={data.fileUrl} alt="file" className="img" />
       </div>
     </div>

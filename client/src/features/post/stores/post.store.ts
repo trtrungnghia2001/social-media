@@ -50,9 +50,7 @@ export const usePostStore = create<IPostStore>()((set, get) => ({
     const resp = (
       await instance.get<ResponseSuccessListType<IPost>>(baseUrl + '?' + query)
     ).data
-    set({
-      posts: resp.data,
-    })
+
     return resp
   },
   getMe: async (query = '') => {
@@ -66,26 +64,27 @@ export const usePostStore = create<IPostStore>()((set, get) => ({
   },
   toggleLike: async (postId) => {
     const resp = (
-      await instance.post<ResponseSuccessType<IPost>>(
-        baseUrl + postId + '/like',
-      )
+      await instance.put<ResponseSuccessType<IPost>>(baseUrl + postId + '/like')
     ).data
-    set({
-      posts: get().posts.map((i) =>
-        i._id === postId ? { ...i, ...resp.data } : i,
-      ),
-    })
+
     return resp
   },
-  sharePost: async (postId) => {
+  toggleRepost: async (postId) => {
     const resp = (
-      await instance.post<ResponseSuccessType<IPost>>(
-        baseUrl + postId + '/share',
+      await instance.put<ResponseSuccessType<IPost>>(
+        baseUrl + postId + '/repost',
       )
     ).data
-    set({
-      posts: [resp.data, ...get().posts],
-    })
+
+    return resp
+  },
+  toggleBookmark: async (postId) => {
+    const resp = (
+      await instance.put<ResponseSuccessType<IPost>>(
+        baseUrl + postId + '/bookmark',
+      )
+    ).data
+
     return resp
   },
 }))
